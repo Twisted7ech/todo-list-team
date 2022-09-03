@@ -65,6 +65,19 @@ i.check{
     font-family: 'kumbh sans', poppins;
 }
 
+html {
+    /* To make use of full height of page*/
+    min-height: 100%;
+    margin: 0;
+    background-image: linear-gradient(#02aab0, #00cdac);
+    background-position: cover;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+
 .container {
     display: block;
     margin-left: auto;
@@ -101,7 +114,7 @@ li {
     border: 2px solid #4bdd8d;
     background-color: white;
     padding: 0;
-    width: 15rem;
+    width: 15vw;
     height: 27px;
     border-radius: 10px;
     text-align: center;
@@ -167,4 +180,40 @@ select {
     .container {
         width: 90%;
     }
+    .input {
+        width: 70%;
+    }
+}
+
+/* Index.js */
+
+
+.indexSec {
+    width: 25vw;
+    height: 10vw;
+    color:#4ba8dd;
+}
+
+.indexSec h1 {
+    margin-top: 4rem;
+}
+
+/* Login */
+
+.loginCon {
+    width: 20vw;
+}
+
+.logSec1 {
+    font-size: 2.5rem;
+    color:#4ba8dd;
+    padding-bottom: 1.3rem;
+}
+.logSec1 i {
+    font-size: 3rem;
+    color:#4ba8dd;
+}
+
+.logSec2 input {
+    margin: 1rem 0;
 }
