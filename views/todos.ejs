@@ -4,34 +4,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <script src="https://kit.fontawesome.com/a44ac01a42.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <title>Todo List</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span><%= el.priority %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    <section class="container">
+        <div>
+            <h1>Todos</h1>
+            <h4>Get started on your tasks today!</h4>
+        </div>
+
+        <!-- <div class="list">
+            <ul>
+            <% todos.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <i class="fa-regular fa-circle "></i>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <span><%= el.priority %></span>
+                        <span class='del'><i class="fa-regular fa-circle-xmark"></i></span>
+                    </li>
+            <% }) %>    
+            </ul>
+        </div> -->
+        <section class="priorityLists">
+            <div class="list">
+                <h1>High Priority</h1>
+                <ul>
+                <% high.forEach( el => { %>
+                        <li class='todoItem' data-id='<%=el._id%>'>
+                            <i class="fa-regular fa-circle <%= el.completed === true ? 'completed' : 'not'%>"></i>
+                            <i class="fa-solid fa-check <%= el.completed === false ? 'completed' : 'not'%> check"></i>
+                            <span class="<%= el.completed === true ? 'completed' : 'not'%>"><%= el.todo %></span>
+                            <!-- <span><%= el.priority %></span> -->
+                            <span class='del'><i class="fa-regular fa-circle-xmark"></i></span>
+                        </li>
+                <% }) %>    
+                </ul>
+            </div>
+            <div class="list">
+                <h1>Medium Priority</h1>
+                <ul>
+                <% med.forEach( el => { %>
+                        <li class='todoItem' data-id='<%=el._id%>'>
+                            <i class="fa-regular fa-circle <%= el.completed === true ? 'completed' : 'not'%>"></i>
+                            <i class="fa-solid fa-check <%= el.completed === false ? 'completed' : 'not'%> check"></i>
+                            <span class="<%= el.completed === true ? 'completed' : 'not'%>"><%= el.todo %></span>
+                            <!-- <span><%= el.priority %></span> -->
+                            <span class='del'><i class="fa-regular fa-circle-xmark"></i></span>
+                        </li>
+                <% }) %>    
+                </ul>
+            </div>
+            <div class="list">
+                <h1>Low Priority</h1>
+                <ul>
+                <% low.forEach( el => { %>
+                        <li class='todoItem' data-id='<%=el._id%>'>
+                            <i class="fa-regular fa-circle <%= el.completed === true ? 'completed' : 'not'%>"></i>
+                            <i class="fa-solid fa-check <%= el.completed === false ? 'completed' : 'not'%> check"></i>
+                            <span class="<%= el.completed === true ? 'completed' : 'not'%>"><%= el.todo %></span>
+                            <!-- <span><%= el.priority %></span> -->
+                            <span class='del'><i class="fa-regular fa-circle-xmark"></i></span>
+                        </li>
+                <% }) %>    
+                </ul>
+            </div>
+        </section>
+        <div>
+            <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+
+            <form action="/todos/createTodo" method='POST'>
+                <input class="input" type="text" placeholder="Enter Todo Item" name='todoItem'>
+                <select name="todoPriority">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                <input class="submit" type="submit">
+                </select>
+            </form>
+        </div>
+    </section>
     
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-        <select name="todoPriority">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-        </select>
-    </form>
-
-    <a href="/logout">Logout</a>
+    <section class="logoutB">
+        <a href="/logout"><i class="lbuttons fa-solid fa-right-from-bracket"></i></a>
+    </section>
 
     <script src="js/main.js"></script>
 </body>
