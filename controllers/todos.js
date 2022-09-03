@@ -5,8 +5,11 @@ module.exports = {
         console.log(req.user)
         try{
             const todoItems = await Todo.find({userId:req.user.id})
+            const highPriority = await Todo.find({priority: 'high', userId:req.user.id})
+            const medPriority = await Todo.find({priority: 'medium', userId:req.user.id})
+            const lowPriority = await Todo.find({priority: 'low', userId:req.user.id})
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
+            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user, high: highPriority, med: medPriority, low: lowPriority})
         }catch(err){
             console.log(err)
         }
