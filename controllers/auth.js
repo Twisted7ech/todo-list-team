@@ -15,7 +15,7 @@ const User = require('../models/User')
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
-  
+    // if errors use flash to alert in dom
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
       return res.redirect('/login')
@@ -25,6 +25,7 @@ const User = require('../models/User')
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
+        //if user doesn't exist
         req.flash('errors', info)
         return res.redirect('/login')
       }

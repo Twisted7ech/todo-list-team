@@ -1,6 +1,8 @@
+
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
+//result of a new user will be an object with username, email and password(hashed)
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
